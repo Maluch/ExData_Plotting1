@@ -36,7 +36,7 @@ data[,8] <- as.numeric(as.character(data[,8]))
 # plotting
 png("plot3.png", width = 480, height = 480)
 
-plot(data[,1], data[,6], type="l", ylab="Energy sub metering")
+plot(data[,1], data[,6], type="l", ylab="Energy sub metering", xlab="")
 lines(data[,1], data[,7], col="red")
 lines(data[,1], data[,8], col="blue")
 legend("topright", legend=c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"), 

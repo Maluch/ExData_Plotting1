@@ -35,7 +35,7 @@ data[,2] <- as.numeric(as.character(data[,2]))
 # plotting
 png("plot2.png", width = 480, height = 480)
 
-plot(data[,1], data[,2], type="l", ylab="Global Active Power (kilowatts)")
+plot(data[,1], data[,2], type="l", ylab="Global Active Power (kilowatts)", xlab="")
 
 dev.off()
 
