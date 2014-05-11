@@ -28,19 +28,36 @@ names(data) <- c("Data/Time", "Global_active_power", "Global_reactive_power", "V
 Sys.setlocale("LC_TIME", "English")
 
 # from factor to numeric
+data[,2] <- as.numeric(as.character(data[,2]))
+data[,3] <- as.numeric(as.character(data[,3]))
+data[,4] <- as.numeric(as.character(data[,4]))
 data[,6] <- as.numeric(as.character(data[,6]))
 data[,7] <- as.numeric(as.character(data[,7]))
 data[,8] <- as.numeric(as.character(data[,8]))
 
 
 # plotting
-png("plot3.png", width = 480, height = 480)
 
-plot(data[,1], data[,6], type="l", ylab="Energy sub metering")
+png("plot4.png", width = 480, height = 480)
+
+op <- par(mfrow = c(2, 2))
+
+# chart 1,1
+plot(data[,1], data[,2], type="l", ylab="Global Active Power", xlab="")
+
+# chart 1,2
+plot(data[,1], data[,4], type="l", ylab="Voltage", xlab="datetime")
+
+# chart 2,1
+plot(data[,1], data[,6], type="l", ylab="Energy sub metering", xlab="")
 lines(data[,1], data[,7], col="red")
 lines(data[,1], data[,8], col="blue")
 legend("topright", legend=c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"), 
        col=c("black", "red", "blue"), lty=c(1, 1, 1))
 
-dev.off()
+# chart 2,2
+plot(data[,1], data[,3], type="l", ylab="Global_reactive_power", xlab="datetime")
 
+
+par(op)
+dev.off()
